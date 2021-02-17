@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则</title>
+</head>
+
+<body>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
+    <script>
+        //年龄介于18-65 18-19 20-59 60-65
+        // var reg = /^1[8-9]|[2-5]\d|6[]0-5$/;
+        // console.log(reg.test('18'))
+
+        // 验证邮箱
+        // 123@qq.com
+        // 123@qq.com.cn
+        // 123@chaofankeji.cn
+        // var reg = /^[\w.-]+@[0-9a-zA-Z]+(\.[a-zA-Z]{2,4}){1,2}$/;
+        // reg.test('123456@chanfankeji.com.cn')
+
+        // 中国标准真实姓名2-4位
+        // var reg= /^[\u4e00-\u9fa5]{2,4}$/;
+        // reg.test('刘永轰轰轰')
+        // 身份证号码
+        // var reg = /^\d{17}(\d|X)$/;
+        // 分组捕获
+        // var reg = /^(\d{2})(\d{4})(\d{4})(\d{2})(\d{2})(\d{2})(?:\d)(\d|X)$/g
+        // var str = "430522199905225623";
+        // var ary = reg.exec(str);
+        // console.log(ary) ["430522199905225623", "43", "0522", "1999", "05", "22", "56", "3", index: 0, input: "430522199905225623", groups: undefined]
+        // 找出字符串所有匹配正则的数字
+        // var reg = /\d+/g;
+        // var str = "gongzuo2019gundan2020niuzhuanqiankun2021";
+        // var res = reg.exec(str);
+        // var ary = [];
+        // console.log(res)
+        // while (res) {
+        //     ary.push(res[0]);
+        //     res = reg.exec(str);
+        // }
+        // console.log(ary) ["2019","2020","2021"]
+
+
+        // 使用match找出字符串所有匹配正则的数字
+        // var reg = /\d+/g;
+        // var str = "gongzuo2019gundan2020niuzhuanqiankun2021";
+        // var ary = str.match(reg);
+        // console.log(ary)
+
+
+    </script>
+
+</body>
+
+</html>

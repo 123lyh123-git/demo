@@ -1,0 +1,93 @@
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>正则</title>
+    </head>
+
+    <body>
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
+        <script>
+            // 正则替换xun为ggg
+            // var str="zhufengpeixun123zhufengpeixun345"
+            // str = str.replace(/xun/g,"ggg");
+            // console.log(str);zhufengpeiggg123zhufengpeiggg345
+
+            // var str = "zhufengpeixun123zhufengpeixun345";
+            // str = str.replace(/zhufeng/g, function () {
+            //     // 匿名函数执行的次数就是正则匹配的多少
+            //     // console.log(arguments);arguments的内容与exec捕获的结果是一样的
+            //     // return 替换的内容
+            //     return "liuyonghong"
+            // })
+            // str = str.replace(/(zhufeng)/g, function () {
+            //     // console.log(arguments[0]);获取正则捕获到的第一个分组的内容
+            //     // console.log(RegExp.$1);获取正则捕获到的第一个分组的内容
+            //     return "liuyonghong"
+            // })
+
+            // var str = "18520553191";
+            // var res = str.substr(3, 4);
+            // str = str.replace(res, "****");
+            // console.log(str)
+
+            // var str = "2021";
+            // var ary = ["零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖"];
+            // str = str.replace(/\d/g, function () {
+            //     return ary[arguments[0]];
+            // })
+            // console.log(str)贰零贰壹
+
+            // var str = "my name is {0},my age is {1}",
+            //     ary = ["liuyonghong","22"],
+            //     reg=/{(\d+)}/g;
+            //     str = str.replace(reg,function(){
+            //         return ary[arguments[1]]
+            //     })
+            //     console.log(str)my name is liuyonghong,my age is 22
+
+            // 获取一个字符串中出现最多的字符
+            // var str = "zhufengpeixunyangfanqihang";
+            // var obj = {};
+            // var reg = /[a-z]/gi;
+            // str.replace(reg, function () {
+            //     var val = arguments[0];
+            //     // 字母不存在对象为1，存在对象累加
+            //     obj[val] >= 1 ? obj[val] += 1 : obj[val] = 1;
+            // })
+            // //console.log(obj){z: 1, h: 2, u: 2, f: 2, e: 2, …}
+            // // 获取最多出现的次数
+            // var maxNum = 0;
+            // for (var key in obj) {
+            //     obj[key] > maxNum ? maxNum = obj[key] : null;
+            // }
+            // // 把所有符合maxnum次数的都获取到
+            // var ary = [];
+            // for (var key in obj) {
+            //     obj[key] === maxNum ? ary.push(key) : null;
+            // }
+            // // console.log("出现最多的字符是："+ary.toString()+"次数是："+maxNum)出现最多的字符是：n次数是：5
+
+            // url地址截取
+            var str = "http://kbs.sports.qq.com/kbsweb/game.html?mid=100000&cid=1467086&app=1.0";
+            var reg = /([^?=&]+)=([^?=&]+)/g;
+            var obj = {};
+            // 第一种方法
+            // var res = reg.exec(str);
+            // while(res) {
+            //     obj[res[1]] = res[2];
+            //     res = reg.exec(str);
+            // }
+            // 第二种方法
+            str.replace(reg,function(){
+                obj[arguments[1]]=arguments[2]
+            })
+            console.log(obj)//{mid: "100000", cid: "1467086", app: "1.0"}
+        </script>
+
+    </body>
+
+    </html>

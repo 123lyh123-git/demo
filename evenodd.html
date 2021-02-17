@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三个为一组的不同颜色</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li {
+            list-style: none;
+            height: 30px;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+
+        .pink {
+            background-color: pink;
+        }
+
+        .bg0 {
+            background-color: red;
+        }
+
+        .bg1 {
+            background-color: blue;
+        }
+
+        .bg2 {
+            background-color: pink;
+        }
+
+        .active {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="list">
+        <li>11111111111111111111111</li>
+        <li>22222222222222222222222</li>
+        <li>33333333333333333333333</li>
+        <li>44444444444444444444444</li>
+        <li>55555555555555555555555</li>
+        <li>66666666666666666666666</li>
+        <li>77777777777777777777777</li>
+        <li>88888888888888888888888</li>
+        <li>99999999999999999999999</li>
+    </ul>
+</body>
+<script src="js/jquery-3.5.1.min.js"></script>
+<script>
+    var u = document.getElementById("list");
+    // console.log(u)
+    var list = u.getElementsByTagName('li');
+    var max = list.length - 1;
+
+    // 思路1
+    for (var i = 0; i < list.length; i += 3) {
+        list[i].style.color = 'red';
+        for (var j = 1; j < list.length; j += 3) {
+            console.log(list[j]);
+            list[j].style.color = 'pink';
+            for (var k = 2; k < list.length; k += 3) {
+                console.log(list[k]);
+                list[k].style.color = 'green';
+            }
+        }
+    }
+
+    // 思路2
+    // for (var i = 0; i < list.length; i++) {
+    //     if (i % 3 === 0) {
+    //         list[i].style.color = 'red';
+    //     } else if (i % 3 === 1) {
+    //         list[i].style.color = 'blue';
+    //     } else {
+    //         list[i].style.color = 'pink';
+    //     }
+    // }
+
+    // 思路3
+    // var arry = ['red', 'blue', 'pink'];
+    // for (var i = 0; i < list.length; i++) {
+    //     list[i].className = arry[i % arry.length];
+    // }
+
+
+    // for (var i = 0; i < list.length; i++) list[i].className = 'bg' + (i%3);
+
+
+
+    // 鼠标悬浮变色，移除恢复样式
+    for (let i = 0; i < list.length; i++) {
+        // list[i].onmouseover = function () {
+        //     list[i].style.backgroundColor = 'blue';
+        // }
+        // list[i].onmouseout = function () {
+        //     list[i].style.backgroundColor = '';
+        // }
+        // 最常用的样式在样式后面追加样式
+        // list[i].onmouseover = function () {
+        //     this.className += 'active1';
+        // }
+        // list[i].onmouseout = function () {
+        //     this.className = this.className.replace('active1','');
+        // }
+        // 悬浮高亮新思路
+        // list[i].oldClassName = list[i].className;
+        // list[i].onmouseover = function () {
+        //     this.className = 'active';
+        // }
+        // list[i].onmouseout = function () {
+        //     this.className = this.oldClassName;
+        // }
+    }
+
+</script>
+
+</html>

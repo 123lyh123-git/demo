@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滑动魔法</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .cube {
+            width: 100vw;
+            height: 100vh;
+            background: papayawhip;
+            perspective: 1000px;
+        }
+
+        .cube_list {
+            width: 5.1rem;
+            height: 5.1rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -2.55rem;
+            margin-left: -2.55rem;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-transform: scale(0.6) rotateX(-35deg) rotateY(45deg);
+            transform: scale(0.6) rotateX(-35deg) rotateY(45deg);
+            -webkit-transition: all .3s;
+            transition: all .3s;
+        }
+
+        .cube_list li {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -2.55rem;
+            margin-left: -2.55rem;
+            list-style: none;
+        }
+        .cube_box{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .cube_box .cube_item{
+            width: 32%;
+            height: 32%;
+            border: 1px solid black;
+        }
+
+        .cube_list li:nth-child(1) {
+            background-color: peru;
+            -webkit-transform: translateZ(2.55rem);
+            transform: translateZ(2.55rem);
+        }
+
+        .cube_list li:nth-child(2) {
+            background-color: rgb(63, 205, 75);
+            -webkit-transform: rotateY(180deg) translateZ(2.55rem);
+            transform: rotateY(180deg) translateZ(2.55rem);
+        }
+
+        .cube_list li:nth-child(3) {
+            background-color: rgb(205, 63, 106);
+            -webkit-transform: rotateY(90deg) translateZ(2.55rem);
+            transform: rotateY(90deg) translateZ(2.55rem);
+        }
+
+        .cube_list li:nth-child(4) {
+            background-color: rgb(102, 58, 138);
+            -webkit-transform: rotateY(-90deg) translateZ(2.55rem);
+            transform: rotateY(-90deg) translateZ(2.55rem);
+        }
+
+        .cube_list li:nth-child(5) {
+            background-color: rgb(63, 172, 205);
+            -webkit-transform: rotateX(-90deg) translateZ(2.55rem);
+            transform: rotateX(-90deg) translateZ(2.55rem);
+        }
+
+        .cube_list li:nth-child(6) {
+            background-color: rgb(205, 63, 162);
+            -webkit-transform: rotateX(90deg) translateZ(2.55rem);
+            transform: rotateX(90deg) translateZ(2.55rem);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cube">
+        <ul class="cube_list">
+            <li>
+                <div class="cube_box">
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                </div>
+            </li>
+            <li>
+                <div class="cube_box">
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                </div>
+            </li>
+            <li>
+                <div class="cube_box">
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                </div>
+            </li>
+            <li>
+                <div class="cube_box">
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                </div>
+            </li>
+            <li>
+                <div class="cube_box">
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                    <div class="cube_item"></div>
+                </div>
+            </li>
+            <li>          <div class="cube_box"> 
+                <div class="cube_item"></div>
+                <div class="cube_item"></div>
+                <div class="cube_item"></div>
+                <div class="cube_item"></div>
+                <div class="cube_item"></div>
+                <div class="cube_item"></div>
+                <div class="cube_item"></div>
+                <div class="cube_item"></div>
+                <div class="cube_item"></div>
+            </div></li>
+        </ul>
+    </div>
+</body>
+
+<script src="js/jquery-3.5.1.min.js"></script>
+<script>
+    document.documentElement.style.fontSize = document.documentElement.clientWidth / 750 * 100 + 'px';
+    $('.cube_list').attr({
+        rotateX: -35,
+        rotateY: 45
+    })
+    $('.cube_list').on('touchstart', function (ev) {
+        var point = ev.touches[0]; //第一根手指位置
+        $(this).attr({
+            strX: point.clientX,     //手指按下的開始位置
+            strY: point.clientY,
+            changeX: 0,
+            changeY: 0
+        })
+    });
+    $('.cube_list').on('touchmove', function (ev) {
+        var point = ev.touches[0]; //第一根手指位置
+        var changeX = point.clientX - $(this).attr('strX'),    //改變的位置減去開始位置
+            changeY = point.clientY - $(this).attr('strY');
+        $(this).attr({
+            changeX: changeX,
+            changeY: changeY
+        })
+    });
+    $('.cube_list').on('touchend', function () {
+        var changeX = parseFloat($(this).attr('changeX')),
+            changeY = parseFloat($(this).attr('changeY'));   //獲取改變屬性的值
+        var rotateX = parseFloat($(this).attr('rotateX')),   //獲取開始屬性的值
+            rotateY = parseFloat($(this).attr('rotateY'));
+        //x軸是上下滑動、y軸是左右滑動
+        if(isSwiper(changeX,changeY) === false) return;
+        rotateX = rotateX - changeY / 3;
+        rotateY = rotateY + changeX / 3;
+        $('.cube_list').attr({
+            rotateX: rotateX,
+            rotateY: rotateY
+        }).css('transform', 'scale(0.6) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)')
+    })
+
+    function isSwiper(changeX, changeY) {
+        //華東大於30的時候，防止手抖索
+        return Math.abs(changeX) > 30 || Math.abs(changeY) > 30;
+    }
+
+</script>
+
+</html>

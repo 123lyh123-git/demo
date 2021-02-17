@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>课程大纲</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .course {
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+            position: relative;
+        }
+
+        .course dl {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: 1.9rem;
+            margin-left: -2.7rem;
+            width: 5.4rem;
+            height: 8.2rem;
+            transform-style: preserve-3d;
+        }
+
+        .course dl dt,
+        .course dl dd {
+            height: .6rem;
+            background: #2ae131;
+            font-size: 0.4rem;
+            text-align: center;
+        }
+
+        .course dl dt {
+            color: yellow;
+            font-size: 0.4rem;
+            text-align: center;
+        }
+
+        .course dl dd {
+            position: relative;
+            border-top: .02rem dashed #e1dede;
+        }
+
+        .course dl dd a {
+            display: block;
+            color: #000;
+            font-size: .28rem;
+            width: 5.4rem;
+            height: .6rem;
+            line-height: .6rem;
+            text-decoration: none;
+        }
+
+        .course dl dd em {
+            display: block;
+            position: relative;
+            left: 15rem;
+            top: 50%;
+            margin-top: -.21rem;
+            width: .36rem;
+            height: .42rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="course">
+        <dl>
+            <dt>课程大纲</dt>
+            <dd><a href="#">JavaScript核心课程</a></dd>
+            <dd><a href="#">JavaScript基础实战</a></dd>
+            <dd><a href="#">JavaScript核心原理</a></dd>
+            <dd><a href="#">JavaScript源码</a></dd>
+            <dd><a href="#">JavaScript设计规划</a></dd>
+            <dd><a href="#">JavaScript Ajax库</a></dd>
+            <dd><a href="#">JavaScript模块化和组件</a></dd>
+            <dd><a href="#">JavaScript项目管理</a></dd>
+            <dd><a href="#">JavaScript后台服务</a></dd>
+            <dd><a href="#">JavaScript企业级开发</a></dd>
+            <dd><a href="#">JavaScriptReact/Vue</a></dd>
+        </dl>
+    </div>
+</body>
+<script src="js/jquery-3.5.1.min.js"></script>
+<!-- 引入makisu.js -->
+<script>
+    // for(int i; i < ; i++;)
+    var ary = [10, 20, 40, 50, 60]
+    for (var i = 0; i < ary.length; i++) {
+        console.log(ary[i])
+    }
+    for (var i = ary.length - 1; i >= 0; i--) {
+        console.log(ary[i])
+    }
+
+
+    for (var i = 0; i < ary.length; i++) {
+        if (i % 2 === 0) {
+            console.log(ary[i])
+        }
+    }
+    for (var i = 1; i < ary.length; i+=2) {
+        console.log(ary[i])
+    }
+    $(".makisu").makisu({
+        selector: 'dd',
+        overlap: 0.6,
+        speed: 0.8
+    })
+    $(".makisu").makisu('open')
+    document.documentElement.style.fontSize = document.documentElement.clientWidth / 750 * 100 + 'px';
+</script>
+
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选项卡</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        .tabbar {
+            width: 500px;
+            margin: 50px auto;
+        }
+
+        .tabbar ul {
+            display: flex;
+            position: relative;
+            top: 1px;
+        }
+
+        .tabbar ul li {
+            padding: 0 10px;
+            border: 1px solid #dddddd;
+            margin-right: 10px;
+            line-height: 33px;
+            cursor: pointer;
+        }
+
+        .tabbar div {
+            display: none;
+            width: 400px;
+            height: 200px;
+            border: 1px solid #dddddd;
+        }
+
+        .tabbar ul li.active {
+            border-bottom: 2px solid #ffffff;
+            color: red;
+            font-weight: bold;
+        }
+
+        .tabbar div.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tabbar" id="tabbar">
+        <ul>
+            <li class="active">新闻</li>
+            <li>电脑</li>
+            <li>音乐</li>
+        </ul>
+        <div class="active">郑爽代孕弃子，华晨宇为子结婚</div>
+        <div>我和我的家乡</div>
+        <div>wondel u</div>
+    </div>
+</body>
+<script src="js/jquery-3.5.1.min.js"></script>
+<script>
+    // tab选项卡
+    // 一循环给所有的div和li绑定事件
+    // 二循环清空所有的div和li的样式
+    // 三改变当前div和li的样式
+    var tabbar = document.getElementById('tabbar');
+    var l = tabbar.getElementsByTagName('li');
+    var d = tabbar.getElementsByTagName('div');
+    // 解决5
+    var lastIndex = 0;
+    for (var i = 0; i < l.length; i++) {
+        l[i].index = i;
+        l[i].onclick = function () {
+            if(lastIndex === this.index) return
+            l[lastIndex].className = '';
+            d[lastIndex].className = '';
+            this.className = 'active';
+            d[this.index].className = 'active';
+            lastIndex = this.index;
+        }
+
+        // l[i].onclick = function () {
+        // changeTab(i);
+        // 此处有坑  函数是一个引用类型，堆内存分配一块空间，没有点击之前存储的是"代码字符串"，点击后i=3
+        // }
+        // 解决1：自定义属性 this 指当前点击的这个指
+        // l[i].index = i;
+        // l[i].onclick = function () {
+        // changeTab(this.index);
+        // }
+        // 解决2：把循环的var i=0；改成let i = 0;
+        // 解决3
+        // ~function (i) {
+        //     l[i].onclick = function () {
+        //         changeTab(i);
+        //     }
+        // }(i)
+        //解决4
+        // l[i].onclick = function (i) {
+        //     return function () {
+        //         changeTab(i);
+        //     }
+        // }(i)
+    }
+    // function changeTab(n) {
+    //     for (var i = 0; i < l.length; i++) {
+    //         l[i].className = '';
+    //         d[i].className = '';
+    //     }
+    //     l[n].className = 'active';
+    //     d[n].className = 'active';
+    // }
+
+    //
+</script>
+
+</html>

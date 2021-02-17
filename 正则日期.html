@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则</title>
+</head>
+
+<body>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
+    <script>
+        // 2020-9-22 12:24:24
+        String.prototype.formatTime = function () {
+            var reg = /^(\d{4})(?:-|\/|\.|:)(\d{1,2})(?:-|\/|\.|:)(\d{1,2})(?:\s+)(\d{1,2})(?:-|\/|\.|:)(\d{1,2})(?:-|\/|\.|:)(\d{1,2})$/g;
+            var ary = [];
+            this.replace(reg, function () {
+                ary = ([].slice.call(arguments)).slice(1, 7);//[].slice.call(arguments)类数组转换为数组
+            })
+            
+            var format = arguments[0] || "{0}年{1}月{2}日{3}:{4}:{5}";
+            console.log(arguments[0]);
+            return format.replace(/{(\d+)}/g, function () {
+                var val = ary[arguments[1]];
+                return val.length === 1 ? "0" + val : val
+            })
+        }
+        var str="2021-1-22 14:23:25";
+        console.log(str.formatTime("{1}月{2}日"));
+    </script>
+
+</body>
+
+</html>

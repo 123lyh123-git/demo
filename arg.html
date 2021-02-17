@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: red;
+            background: url(img/phone_bg.PNG);
+        }
+    </style>
+</head>
+
+<body>
+    1
+</body>
+<!-- <script src="js/queryUrl.js"></script> -->
+<script>
+    // function add() {
+    //     var total = null;
+    //     for (var i = 0; i < arguments.length; i++) {
+    //         var item = arguments[i];
+    //         item = Number(item);
+    //         isNaN(item) ? null : total += item;
+    //     }
+    //     return total;
+    // }
+    let add = (...arg)=> eval(arg.filter(item=>!isNaN(item)).join('+'));
+   console.log(add(10, '30', 'aa', '56', '58')); 154
+</script>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {}
+    </style>
+</head>
+
+<body>
+    <div id="codebox">
+
+
+    </div>
+    <a href="javascript:;" id="Link">看不清，换一张</a>
+</body>
+<script>
+    var codebox = document.getElementById('codebox'),
+        link = document.getElementById("Link");
+    // function queryCode() {
+    //     var area = "abcdefghigklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ0123456789",
+    //         result = '';
+    //     for (var i = 1; i <= 4; i++) {
+    //         var n = Math.round(Math.random() * 61),
+    //             str = area.charAt(n);
+    //         // 生成四个不重复的验证码 逻辑
+    //         if (result.indexOf(str) > -1) {
+    //          i--;
+    //          continue;
+    //         }
+    //         result += str;
+    //     }
+    //     return result;
+    // }
+    function queryCode() {
+        var area = "abcdefghigklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ0123456789",
+            result = '';
+        while (result.length < 4) {
+            var n = Math.round(Math.random() * 61),
+                str = area.charAt(n);
+            // 生成四个不重复的验证码 逻辑
+            if (result.indexOf(str) === -1) {
+                result += str;
+            }
+        }
+        return result;
+    }
+    codebox.innerHTML = queryCode();
+    link.onclick = function () {
+        codebox.innerHTML = queryCode();
+    }
+    console.log(queryCode())
+</script>
+
+</html>

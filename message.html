@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聊天页面</title>
+    <style>
+        body,
+        html {
+            background: #EAEAEA;
+        }
+
+        .message_list {
+            margin-top: .2rem;
+            transition: all 0.3s;
+        }
+
+        .message_list li {
+            padding: .25rem;
+            margin-bottom: .4rem;
+            max-width: 3.6rem;
+            line-height: .4rem;
+            font-size: 0.26rem;
+            border-radius: .1rem;
+            list-style: none;
+            transform: translateY(1rem);
+            opacity: 0;
+            transition: all .3s;
+        }
+
+        .message_list li.student {
+            position: relative;
+            margin-left: 1.25rem;
+            background: #fff;
+            float: left;
+            border: .02rem solid #fff;
+        }
+
+        .message_list li.teacher {
+            position: relative;
+            margin-right: 1.8rem;
+            background: #A2E45C;
+            float: right;
+            border: .02rem solid #A2E45C;
+        }
+
+        .message_list li.student em {
+            position: absolute;
+            top: 0;
+            left: -17px;
+            display: block;
+            width: 0;
+            height: 0;
+            border: .2rem solid;
+            border-color: transparent #fff transparent transparent;
+        }
+
+        .message_list li.teacher em {
+            position: absolute;
+            top: 0;
+            right: -17px;
+            display: block;
+            width: 0;
+            height: 0;
+            border: .2rem solid;
+            border-color: transparent transparent transparent #A2E45C;
+        }
+
+        .message_list li.student img {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: -56px;
+            width: .85rem;
+            height: .85rem;
+            border-radius: 1rem;
+        }
+
+        .message_list li.teacher img {
+            display: block;
+            position: absolute;
+            top: 0;
+            right: -56px;
+            width: .85rem;
+            height: .85rem;
+            border-radius: 1rem;
+        }
+
+        .keyboard {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 5.16rem;
+            background: url('img/keyboard.jpg') no-repeat;
+            background-size: 100% 100%;
+            transform: translateY(4.5rem);
+            transition: all .3s;
+        }
+
+        .keyboard .textTip {
+            display: none;
+            position: absolute;
+            left: .9rem;
+            top: .35rem;
+            width: 4rem;
+            height: .1rem;
+            line-height: .1rem;
+            font-size: .25rem;
+        }
+
+        .keyboard .submit {
+            display: none;
+            position: absolute;
+            right: .1rem;
+            bottom: 0;
+            z-index: 5;
+            width: 1.47rem;
+            height: 1.24rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="message_box">
+        <div class="message_list">
+            <li class="student">
+                哎，毕业了，工资还遥遥无期，好愁啊！
+                <em></em>
+                <img src="img/logo.png" alt="">
+            </li>
+            <li class="teacher">
+                哎，毕业了，好舍不得同学们呀！
+                <em></em>
+                <img src="img/logo.png" alt="">
+            </li>
+            <li class="teacher">
+                那就应该好好准备面试了！
+                <em></em>
+                <img src="img/logo.png" alt="">
+            </li>
+            <li class="teacher">
+                我也是很幸苦的呢！
+                <em></em>
+                <img src="img/logo.png" alt="">
+            </li>
+        </div>
+        <div class="keyboard">
+            <div class="textTip">
+            </div>
+            <div class="submit">
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://zeptojs.com/zepto.min.js"></script>
+<script src="js/jquery-3.5.1.min.js"></script>
+<script>
+    var Timer = null,
+        step = -1,
+        total = $(".message_list li").length,
+        bounceTop = 0;
+
+    function Move() {
+        var Timer = window.setInterval(function () {
+            step++;
+            console.log(step)
+            $(".message_list li").eq(step).css({
+                opacity: 1,
+                transform: 'translateY(0)'
+            });
+            if (step == 2) {
+                window.clearInterval(Timer)
+                $(".keyboard").css('transform', 'translateY(0)');
+                $(".textTip").css('display', 'block');
+                textMove();
+            }
+            if (step >= 3) {
+                bounceTop -= $(".message_list li")[0].offsetHeight +10;
+                $(".message_list").css('transform',"translateY("+bounceTop+"px)")
+            }
+            if(step === total-1){
+                window.clearInterval(Timer)
+            }
+        }, 1500)
+    }
+    Move();
+    function textMove() {
+        var text = "都学了啊，还找不到工资！",
+            n = -1,
+            result = [];
+        var txtTimer = window.setInterval(function () {
+            n++;
+            result += text[n]
+            $('.textTip').html(result);
+            if (n === text.length - 1) {
+                window.clearInterval(txtTimer);
+                $(".submit").css('display', 'block').click(function () {
+                    $(".textTip").css('display', 'none');
+                    $(".keyboard").css('transform', 'translateY(4.5rem)');
+                    Move();
+                });
+            }
+        }, 100)
+    }
+
+    document.documentElement.style.fontSize = document.documentElement.clientWidth / 750 * 100 + 'px';
+
+</script>
+
+</html>

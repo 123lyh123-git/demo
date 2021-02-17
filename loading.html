@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>加载进度条</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body,
+        html {
+            background: black;
+        }
+
+        .loading_box {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: 5.15rem 0 0 -2.3rem;
+            border-radius: .06rem;
+            width: 4.6rem;
+            height: .3rem;
+            background: #fff;
+
+        }
+
+        .loading em {
+            display: block;
+            height: 100%;
+            width: 50%;
+            border-radius: .06rem;
+            background: linear-gradient(45deg, #5CB85C 25%, #74C274 25%, #74C274 50%, #5CB85C 50%, #5CB85C 75%, #74C274 75%, #74C274 100%);
+            background-size: .3rem .3rem;
+            animation: loading 1s linear infinite both;
+        }
+
+        @keyframes loading {
+            0% {
+                background-position: 0 .3rem;
+            }
+
+            100% {
+                background-position: 0 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="loading_box">
+        <div class="loading">
+            <em class="em"></em>
+        </div>
+    </div>
+</body>
+<script src="https://zeptojs.com/zepto.min.js"></script>
+<script src="js/jquery-3.5.1.min.js"></script>
+<script>
+    var ary = ['img03s.jpg', 'logo.png', 'map.png', 'pro_1.jpg', 'pro_2.jpg', 'pro_3.jpg'];
+    var loading = $('.loading');
+    var step = 0,
+        total = ary.length;
+    $.each(ary, function (index, item) {
+        var oimg = new Image;
+        oimg.src = 'img/' + item;
+        oimg.onload = function () {
+            step++;    
+            $(".em").css('width', step / total * 100 + '%');
+            oimg = null;
+            if(step === total){
+            window.setTimeout(function(){
+            alert('你真美！')
+            },2000)
+            }
+        }
+    })
+    document.documentElement.style.fontSize = document.documentElement.clientWidth / 750 * 100 + 'px';
+
+</script>
+
+</html>

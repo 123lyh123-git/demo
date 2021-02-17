@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {}
+    </style>
+</head>
+
+<body>
+    <div id="haha">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+    </div>
+    <dl>
+        <dt>2</dt>
+        <dd>1</dd>
+    </dl>
+    <p id="haha"></p>
+    <a href="javascript:;" id="Link">看不清，换一张</a>
+</body>
+<script>
+    function queryAllById(id) {
+        var nodeList = document.getElementsByTagName('*'),
+            ary = [];
+        for (var i = 0; i < nodeList.length; i++) {
+            var item = nodeList[i];
+            item.id === id ? ary.push(item) : null;
+        }
+        return ary;
+    }
+    // console.log(queryAllById('haha')) Array(2)
+
+    // console.log(haha)  在js中，默认会把元素的id设置为变量
+
+ 
+    // 第一阶段
+    // 1.闭包、作用域、this、oop
+    // 2.dom渲染机制和性能优化
+    // 3.正则表达式解析处理
+    // 4.定时器及js中的异步编程
+    // 5.js事件模型
+    // 6.juery实战应用和源码解读
+    // 7.js中的设计模式：单例、构造、原型、发布订阅、promise
+    // 8.es6新语法规范
+    // 第二阶段：
+    // 1.Hybrid混合式响应式布局开发
+    // 2.ajax及跨域请求
+    // 3.前后的分离和http请求
+    // 第三阶段
+    // 1.node基础，能够基于express、koa等框架编写伪api
+    // 2.vue及全家桶 vue-cli、vue、vue-router、vuex、axios
+    // 3.react及全家桶 react、react-rom、react-router、redux、react-redux、dva、ant
+    // 4.webpack
+    // 5.git
+    // 第四阶段
+    // 6.微信小程序
+    // 7.canvax高级开发\
+
+
+
+    /*
+    * @parameter
+    *     curEle:[object] current element
+    * @return 
+    *     [Array] all the element nodes
+    * by team on 2020/10/22 16:32
+    */
+</script>
+
+</html>
